@@ -7,6 +7,6 @@
 5.  In file, ```/perl/lib/File/Copy.pm```, comment out ```BEGIN { eval q{ use Time::HiRes qw( stat utime ) } };``` by putting ```#``` at the start of the line.  [Source](https://bobhowto.wordpress.com/2019/11/01/how-to-fix-timehiresutime-unimplemented-in-this-platform-in-perl-on-windows/).
 6.  Change the zap2xml.pl perl script from ```$urlRoot = 'https://tvlistings.zap2it.com/';``` to ```$urlRoot = 'https://tvlistings.gracenote.com/';```
 7.  Save and run the perl script: ```perl zap2xml.pl```.  The command line parameters will be displayed.
-8.  The user accounts for zap2it.com were movied to gracenote.com so it should work the same.
+8.  The user accounts for zap2it.com were moved to gracenote.com so it should work the same.
 9.  If you need an account, register with https://tvlistings.gracenote.com/grid-affiliates.html?aid=lat
 10.  Try logging in using ```perl zap2xml.pl -u (email) -p (password) -d 1```
