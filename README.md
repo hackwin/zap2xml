@@ -10,3 +10,9 @@
 8.  The user accounts for zap2it.com were moved to gracenote.com so it should work the same.
 9.  If you need an account, register with https://tvlistings.gracenote.com/grid-affiliates.html?aid=lat
 10.  Try logging in using ```perl zap2xml.pl -u (email) -p (password) -d 1```
+
+# Creating .EXE file #
+1. Run ```portableshell.bat``` which is in main directory.
+2. Install library ```cpanm PAR::Packer```
+3. Run ```pp -o zap2xml.exe zap2xml.pl -M Sub::Util```
+4. Run ```zap2xml.exe```
