@@ -1,29 +1,12 @@
-# zap2xml
+# Instructions for Windows #
 
-See [zap2xml](https://web.archive.org/web/20200426004001/zap2xml.awardspace.info/) for original Perl script and guidance for the configuration file.
-
-## Docker
-
-| Tag | Description |
-|---|---|
-| latest | Stable zap2xml releases |
-| nightly | HEAD zap2xml release |
-
-### Compose
-
-```yaml
-version: '3'
-services:
-  zap2xml:
-    container_name: zap2xml
-    image: ghcr.io/jef/zap2xml:latest
-    environment:
-      OPT_ARGS: >-
-        -I -D -C /config/.zap2xmlrc
-      SLEEPTIME: 43200 # 12 hours in seconds
-      TZ: America/New_York
-    volumes:
-      - /path/to/appdata/zap2xml:/config
-      - /path/to/appdata/xmltv:/xmltv # nice for mapping other drives to this that may use xmltv.xml
-    restart: unless-stopped
-```
+1.  Download [Strawberry Perl](https://strawberryperl.com/).  The portable .Zip with PDL is recommended.
+2.  Extract Strawberry Perl .ZIP file.
+3.  Run ```portableshell.bat``` which is in main directory.
+4.  Install libraries by running these commands: ```cpanm Net::SSLeay``` ```cpanm IO::Socket::SSL``` ```cpanm LWP::Protocol::https```
+5.  In file, ```/perl/lib/File/Copy.pm```, comment out ```BEGIN { eval q{ use Time::HiRes qw( stat utime ) } };``` by putting ```#``` at the start of the line.  [Source](https://bobhowto.wordpress.com/2019/11/01/how-to-fix-timehiresutime-unimplemented-in-this-platform-in-perl-on-windows/).
+6.  Change the zap2xml.pl perl script from ```$urlRoot = 'https://tvlistings.zap2it.com/';``` to ```$urlRoot = 'https://tvlistings.gracenote.com/';```
+7.  Save and run the perl script: ```perl zap2xml.pl```.  The command line parameters will be displayed.
+8.  The user accounts for zap2it.com were movied to gracenote.com so it should work the same.
+9.  If you need an account, register with https://tvlistings.gracenote.com/grid-affiliates.html?aid=lat
+10.  Try logging in using ```perl zap2xml.pl -u (email) -p (password) -d 1```
